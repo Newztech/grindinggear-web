@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavItem } from '../types';
+import { Linkedin, X, } from 'lucide-react';
 
 const footerLinks: NavItem[] = [
   { label: 'MAIN', href: '#main' },
   { label: 'ABOUT', href: '#about' },
-  { label: 'GAME FEATURES', href: '#features' },
+  { label: 'COMPANY', href: '#features' },
   { label: 'SYSTEM REQUIREMENTS', href: '#requirements' },
-  { label: 'SUBSCRIBE', href: '#subscribe' }
+  { label: 'CONTACT US', href: '#subscribe' }
 ];
 
 export const Footer: React.FC = () => {
@@ -25,8 +26,16 @@ export const Footer: React.FC = () => {
               </a>
             ))}
           </div>
+          <div className="flex space-x-4">
+            <a href="https://www.linkedin.com/company/grinding-gear-games/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
+              <Linkedin size={20} />
+            </a>
+            <a href="https://x.com/grindinggear?t=JeIkCZdBQ13VHYdJFaIxiQ&s=08" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
+              <X size={20} />
+            </a>
+          </div>
         </div>
-        <div className="mt-6 flex justify-center with:300px">
+        <div className="mt-6 flex justify-center">
           <img src="https://ima.grindinggear.online/grindinggear/Logo%20ft.svg" alt="Footer Image" className="w-32 h-auto" />
         </div>
       </div>
