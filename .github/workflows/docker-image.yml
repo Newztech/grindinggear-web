@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_and_publish:
-    runs-on: ubuntu-latest  # 🔹 Se ejecuta en runner de Ubuntu
+    runs-on: ubuntu-latest
     steps:
       - name: 🛎️ Checkout del código
         uses: actions/checkout@v4
@@ -19,18 +19,18 @@ jobs:
 
       - name: 🔨 Construcción de la imagen Docker
         run: |
-          IMAGE_NAME="ghcr.io/${{ github.actor }}/${{ github.event.repository.name }}"
+          IMAGE_NAME="ghcr.io/${{ github.actor }}/${GITHUB_REPOSITORY#*/}" | tr '[:upper:]' '[:lower:]'
           IMAGE_TAG=$(git rev-parse --short HEAD)
           echo "Construyendo imagen: $IMAGE_NAME:$IMAGE_TAG"
           docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest .
 
       - name: 📤 Subida de la imagen a GHCR
         run: |
-          IMAGE_NAME="ghcr.io/${{ github.actor }}/${{ github.event.repository.name }}"
+          IMAGE_NAME="ghcr.io/${{ github.actor }}/${GITHUB_REPOSITORY#*/}" | tr '[:upper:]' '[:lower:]'
           IMAGE_TAG=$(git rev-parse --short HEAD)
           echo "Subiendo imagen: $IMAGE_NAME:$IMAGE_TAG"
           docker push $IMAGE_NAME:$IMAGE_TAG
           docker push $IMAGE_NAME:latest
 
       - name: ✅ Confirmación del proceso
-        run: 'echo "✅ Imagen subida correctamente a GHCR: ghcr.io/${{ github.actor }}/${{ github.event.repository.name }}"'
+        run: 'echo "✅ Imagen subida correctamente a GHCR: ghcr.io/${{ github.actor }}/${GITHUB_REPOSITORY#*/}" | tr "[:upper:]" "[:lower:]"'
