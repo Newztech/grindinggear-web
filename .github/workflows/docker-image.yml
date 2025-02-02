@@ -35,5 +35,4 @@ jobs:
         docker push $IMAGE_NAME:$IMAGE_TAG
         docker push $IMAGE_NAME:latest
 
-    - name: ✅ Confirmación del proceso
-      run: echo "✅ Imagen subida correctamente a GHCR: $IMAGE_NAME"
+    - name
