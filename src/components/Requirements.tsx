@@ -24,6 +24,10 @@ const requirements: SystemRequirement[] = [
       'NVIDIA GeForce GTX 660 2GB or',
       'AMD Radeon HD 7850 2GB DirectX11 (Shader Model 5)'
     ]
+  },
+  {
+    title: 'Status server',
+    specs: ['https://uptime.grindinggear.online/status/1']
   }
 ];
 
@@ -48,7 +52,13 @@ export const Requirements: React.FC = () => {
               </h4>
               {req.specs.map((spec, index) => (
                 <p key={index} className="text-white/80 text-sm leading-relaxed">
-                  {spec}
+                  {spec.startsWith('http') ? (
+                    <a href={spec} className="text-teal-400 underline" target="_blank" rel="noopener noreferrer">
+                       Online Server
+                    </a>
+                  ) : (
+                    spec
+                  )}
                 </p>
               ))}
             </div>

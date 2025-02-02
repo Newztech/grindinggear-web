@@ -4,14 +4,12 @@ import { Feature } from '../types';
 const features: Feature[] = [
   {
     title: 'SURVIVE AT ALL COSTS',
-    description: 'You have 30 minutes to find a relic, signal for extraction, and grab one of three spots on the rescue chopper.'
+    description: 'Grinding Gear Games was founded in November 2006 in Auckland, New Zealand. Its founding members come from various countries and have a selection of diverse backgrounds ranging from artificial intelligence and software security to industrial design to professional tournament game play.\n' +
+        '\n' +
+        'We are currently developing Path of Exile, a competitive online action RPG. Much more information about this project is available at www.pathofexile.com\n' +
+        '\n' +
+        'As veterans of various online role playing games, we understand what is required to make a compelling action RPG with visceral combat and a complex item economy..'
   },
-  {
-    title: 'CREATE ALLIES AND ENEMIES'
-  },
-  {
-    title: 'IMPRESS THE AUDIENCE'
-  }
 ];
 
 export const Features: React.FC = () => {
@@ -20,7 +18,7 @@ export const Features: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
           <h2 className="text-2xl text-white mb-2">Why so special?</h2>
-          <h3 className="text-6xl font-bold text-white mb-12">FEATURES</h3>
+          <h3 className="text-6xl font-bold text-white mb-12">Company</h3>
           
           <div className="space-y-12">
             {features.map((feature, index) => (

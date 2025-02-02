@@ -26,6 +26,9 @@ export const Footer: React.FC = () => {
             ))}
           </div>
         </div>
+        <div className="mt-6 flex justify-center with:300px">
+          <img src="https://ima.grindinggear.online/grindinggear/Logo%20ft.svg" alt="Footer Image" className="w-32 h-auto" />
+        </div>
       </div>
     </footer>
   );

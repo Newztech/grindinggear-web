@@ -5,9 +5,9 @@ const navItems: NavItem[] = [
   { imag: 'https://ima.grindinggear.online/grindinggear/notfnd.webp', href: '/' },
   { label: 'MAIN', href: '#main' },
   { label: 'ABOUT', href: '#about' },
-  { label: 'GAME FEATURES', href: '#features' },
+  { label: 'COMPANY', href: '#features' },
   { label: 'SYSTEM REQUIREMENTS', href: '#requirements' },
-  { label: 'SUBSCRIBE', href: '#subscribe' }
+  { label: 'CONTACT US', href: '#subscribe' }
 ];
 
 export const Navigation: React.FC = () => {

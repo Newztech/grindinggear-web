@@ -18,12 +18,16 @@ export const Newsletter: React.FC = () => {
             Want to stay in touch?
           </h2>
           <h3 className="text-6xl font-bold text-white mb-8">
-            NEWSLETTER SUBSCRIBE
+            Contact us
           </h3>
           <p className="text-white/80 mb-12 leading-relaxed">
-            In order to start receiving our news, all you have to do is enter your email address. 
-            Everything else will be taken care of by us. We will send you emails containing 
-            information about game. We don't spam.
+            If you want to contact us, please use the following details:
+
+General Email: contact@grindinggear.com
+
+Press Email: media@grindinggear.com
+
+Phone: +64 9 551 3935 (09 551 3935 inside New Zealand)
           </p>
 
           <form onSubmit={handleSubmit} className="flex gap-4">
