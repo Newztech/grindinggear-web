@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_and_publish:
-    runs-on: self-hosted  # 🔹 Se ejecuta en un runner self-hosted
+    runs-on: ubuntu-latest  # 🔹 Se ejecuta en runner de Ubuntu
     steps:
       - name: 🛎️ Checkout del código
         uses: actions/checkout@v4
