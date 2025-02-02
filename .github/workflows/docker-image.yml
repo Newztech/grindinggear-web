@@ -2,11 +2,12 @@ name: Docker Image CI for GHCR
 
 on:
   push:
-    branches: [ "main" ]  # Se ejecuta en cada push a main
+    branches: [ "main" ]
 
 permissions:
   contents: read
   packages: write
+  id-token: write
 
 jobs:
   build_and_publish:
@@ -15,11 +16,12 @@ jobs:
       - name: 🛎️ Checkout del código
         uses: actions/checkout@v4
 
-      - name: 🔐 Autenticación en GitHub Container Registry (GHCR)
-        env:
-          GHCR_USERNAME: ${{ github.actor }}
-          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USERNAME" --password-stdin
+      - name: 🔑 Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🔨 Construcción de la imagen Docker
         run: |
