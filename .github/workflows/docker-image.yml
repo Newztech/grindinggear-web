@@ -19,18 +19,22 @@ jobs:
 
       - name: 🔨 Construcción de la imagen Docker
         run: |
-          IMAGE_NAME="ghcr.io/${{ github.actor }}/${GITHUB_REPOSITORY#*/}" | tr '[:upper:]' '[:lower:]'
+          REPO_NAME=$(echo ${GITHUB_REPOSITORY#*/} | tr '[:upper:]' '[:lower:]')
+          IMAGE_NAME="ghcr.io/${{ github.actor }}/$REPO_NAME"
           IMAGE_TAG=$(git rev-parse --short HEAD)
           echo "Construyendo imagen: $IMAGE_NAME:$IMAGE_TAG"
           docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest .
 
       - name: 📤 Subida de la imagen a GHCR
         run: |
-          IMAGE_NAME="ghcr.io/${{ github.actor }}/${GITHUB_REPOSITORY#*/}" | tr '[:upper:]' '[:lower:]'
+          REPO_NAME=$(echo ${GITHUB_REPOSITORY#*/} | tr '[:upper:]' '[:lower:]')
+          IMAGE_NAME="ghcr.io/${{ github.actor }}/$REPO_NAME"
           IMAGE_TAG=$(git rev-parse --short HEAD)
           echo "Subiendo imagen: $IMAGE_NAME:$IMAGE_TAG"
           docker push $IMAGE_NAME:$IMAGE_TAG
           docker push $IMAGE_NAME:latest
 
       - name: ✅ Confirmación del proceso
-        run: 'echo "✅ Imagen subida correctamente a GHCR: ghcr.io/${{ github.actor }}/${GITHUB_REPOSITORY#*/}" | tr "[:upper:]" "[:lower:]"'
+        run: |
+          REPO_NAME=$(echo ${GITHUB_REPOSITORY#*/} | tr '[:upper:]' '[:lower:]')
+          echo "✅ Imagen subida correctamente a GHCR: ghcr.io/${{ github.actor }}/$REPO_NAME"
