@@ -2,37 +2,38 @@ name: Docker Image CI for GHCR
 
 on:
   push:
-    branches: [ "main" ]  # Se ejecuta en cada push a main
+    branches: [ "main" ]  # Ejecuta cuando haya un push en main
 
 env:
-  REPO_NAME: ${{ github.event.repository.name }}  # 🔹 Obtiene el nombre del repositorio
-  IMAGE_NAME: ghcr.io/${{ github.actor }}/${{ github.event.repository.name }}  # 🔹 Usa el nombre del repo como imagen
+  REPO_NAME: ${{ github.event.repository.name }}  # 🔹 Usa el nombre del repositorio
+  IMAGE_NAME: ghcr.io/${{ github.actor }}/${{ github.event.repository.name }}  # 🔹 Genera el nombre de la imagen basado en el repo
 
 jobs:
   build_and_publish:
-    runs-on: self-hosted  # 🔹 Se ejecuta en tu runner self-hosted
+    runs-on: self-hosted  # 🔹 Ejecuta en el runner self-hosted
 
     steps:
-    - name: 🛎️ Checkout del código
-      uses: actions/checkout@v4
+      - name: 🛎️ Checkout del código
+        uses: actions/checkout@v4
 
-    - name: 🔐 Autenticación en GitHub Container Registry (GHCR)
-      env:
-        GHCR_USERNAME: ${{ github.actor }}
-        GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USERNAME" --password-stdin
+      - name: 🔐 Autenticación en GitHub Container Registry (GHCR)
+        env:
+          GHCR_USERNAME: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USERNAME" --password-stdin
 
-    - name: 🔨 Construcción de la imagen Docker
-      run: |
-        IMAGE_TAG=$(git rev-parse --short HEAD)
-        echo "Construyendo imagen: $IMAGE_NAME:$IMAGE_TAG"
-        docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest .
+      - name: 🔨 Construcción de la imagen Docker
+        run: |
+          IMAGE_TAG=$(git rev-parse --short HEAD)
+          echo "Construyendo imagen: $IMAGE_NAME:$IMAGE_TAG"
+          docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest .
 
-    - name: 📤 Subida de la imagen a GHCR
-      run: |
-        IMAGE_TAG=$(git rev-parse --short HEAD)
-        echo "Subiendo imagen: $IMAGE_NAME:$IMAGE_TAG"
-        docker push $IMAGE_NAME:$IMAGE_TAG
-        docker push $IMAGE_NAME:latest
+      - name: 📤 Subida de la imagen a GHCR
+        run: |
+          IMAGE_TAG=$(git rev-parse --short HEAD)
+          echo "Subiendo imagen: $IMAGE_NAME:$IMAGE_TAG"
+          docker push $IMAGE_NAME:$IMAGE_TAG
+          docker push $IMAGE_NAME:latest
 
-    - name
+      - name: ✅ Confirmación del proceso
+        run: echo "✅ Imagen subida correctamente a GHCR: $IMAGE_NAME"
