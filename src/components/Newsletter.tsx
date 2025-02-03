@@ -30,7 +30,7 @@ Press Email: media@grindinggear.com
 Phone: +64 9 551 3935 (09 551 3935 inside New Zealand)
           </p>
 
-          <form onSubmit={handleSubmit} className="flex gap-4">
+          <form onSubmit={handleSubmit} className="grid-auto-row space-x-12 space-y-4 gap-4">
             <input
               type="email"
               value={email}

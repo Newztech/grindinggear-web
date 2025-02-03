@@ -33,13 +33,13 @@ const requirements: SystemRequirement[] = [
 
 export const Requirements: React.FC = () => {
   return (
-    <section id="requirements" className="py-24 bg-gradient-to-b from-black to-gray-900">
+    <section id="requirements" className="w-full py-24 bg-gradient-to-b from-black to-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-2xl text-white mb-2">
             Can My Computer Run this game?
           </h2>
-          <h3 className="text-6xl font-bold text-white">
+          <h3 className="text-4xl font-bold text-white">
             SYSTEM REQUIREMENTS
           </h3>
         </div>

@@ -12,10 +12,10 @@ const footerLinks: NavItem[] = [
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="py-8 bg-black border-t border-white/10">
+    <footer className="w-full py-8 bg-black border-t border-white/10">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-8">
+        <div className="space-x-8 space-y-8 grid-auto-row items-center">
+          <div className="w-full space-x-8 space-y-8 grid-auto-row items-center ">
             {footerLinks.map((link) => (
               <a
                 key={link.label}

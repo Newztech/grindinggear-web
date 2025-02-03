@@ -23,7 +23,7 @@ export const Navigation: React.FC = () => {
             <img
               src="https://ima.grindinggear.online/grindinggear/notfnd.webp"
               alt="Logo"
-              className="h-auto"
+              className="size-auto"
               style={{ width: 'clamp(120px, 30vw, 150px)' }}
             />
           </a>
