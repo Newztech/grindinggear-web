@@ -4,7 +4,7 @@ import { HeroSection } from '../types';
 const heroData: HeroSection = {
   title: '',
   subtitle: 'Experience our games',
-  backgroundImage: 'https://ima.grindinggear.online/grindinggear/main.webp'
+  backgroundImage: 'https://ima.grindinggear.online/grindinggear/main-web.webp'
 };
 
 export const Hero: React.FC = () => {
