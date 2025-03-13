@@ -6,7 +6,7 @@ This repository contains the source code for the second version of the official 
 
 Technologies Used
 
-React.js - Frontend framework for dynamic UI
+React.js - Frontend framework for dynamic UI-i
 
 Tailwind CSS - For responsive and modern styling
 
